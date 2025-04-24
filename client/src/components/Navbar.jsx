@@ -43,7 +43,7 @@ function Navbar() {
     { label: 'Commercial', path: '/commercial' },
     { label: 'Projects', path: '/projects' },
     { label: 'Agents', path: '/agents' },
-    { label: 'Tools', path: '/tools' }
+    { label: 'Contact Us', path: '/contact' }
   ];
 
   return (

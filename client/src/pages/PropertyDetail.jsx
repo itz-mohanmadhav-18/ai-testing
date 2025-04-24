@@ -27,12 +27,20 @@ function PropertyDetail() {
     const fetchProperty = async () => {
       setLoading(true);
       try {
+        console.log('Fetching property with ID:', id);
         const response = await axios.get(
           `http://localhost:5000/api/properties/${id}`
         );
+        console.log('Property data received:', response.data);
+        if (!response.data) {
+          throw new Error('No property data received');
+        }
         setProperty(response.data);
+        setError('');
       } catch (err) {
-        setError('Failed to load property details. Please try again.');
+        console.error('Error fetching property:', err);
+        setError(err.response?.data?.message || 'Failed to load property details. Please try again.');
+        setProperty(null);
       } finally {
         setLoading(false);
       }
